@@ -57,11 +57,24 @@
             text-align: center;
         }
 
-        .button-container {
+        /* --- CÓDIGO CSS MODIFICADO E ADICIONADO --- */
+
+        /* Novo contêiner principal para as colunas */
+        .button-grid-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            flex-direction: row; /* Alinha as colunas lado a lado */
+            justify-content: center; /* Centraliza as colunas no painel */
+            gap: 40px; /* Espaço entre as duas colunas */
+            align-items: flex-start; /* Alinha as colunas pelo topo */
+        }
+
+        /* Estilo para cada coluna de botões */
+        .button-column {
+            display: flex;
+            flex-direction: column; /* Empilha os botões verticalmente */
+            gap: 20px; /* Espaço entre os botões dentro de uma coluna */
+            flex: 1; /* Permite que as colunas cresçam igualmente */
+            max-width: 400px; /* Mantém a largura máxima original */
         }
 
         .app-button {
@@ -75,8 +88,7 @@
             font-size: 1.1em;
             font-weight: 500;
             transition: background-color 0.2s, transform 0.2s;
-            width: 100%;
-            max-width: 400px; /* Largura máxima para os botões */
+            width: 100%; /* O botão ocupa 100% da largura da sua coluna */
             box-sizing: border-box;
         }
 
@@ -91,6 +103,24 @@
             text-align: center;
             font-size: 1.2em;
         }
+        
+        /* Media Query para responsividade em telas menores */
+        @media (max-width: 850px) {
+            .button-grid-container {
+                flex-direction: column; /* Empilha as colunas verticalmente */
+                align-items: center; /* Centraliza a pilha de colunas */
+                gap: 0; /* Remove o espaço entre as colunas empilhadas */
+            }
+
+            .button-column {
+                width: 100%; /* Garante que a coluna ocupe a largura total */
+            }
+
+            /* Adiciona um espaço entre o último botão da primeira coluna e o primeiro da segunda */
+            .button-column:first-child {
+                 margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -101,34 +131,34 @@
     <div class="main-container">
         <div class="panel">
             <h2>Acessar Sistemas</h2>
-            <div class="button-container">
-                <a href="https://quadrodetrabalho231.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-clipboard-list"></i> Quadro de Controle Integrado
-                </a>
-                
-                <a href="http://jefferson89.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-hourglass-half"></i> Controle de Carga Horária
-                </a>
+            
+            <div class="button-grid-container">
+                <div class="button-column">
+                    <a href="https://quadrodetrabalho231.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-clipboard-list"></i> Quadro de Controle Integrado
+                    </a>
+                    <a href="http://jefferson89.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-hourglass-half"></i> Controle de Carga Horária
+                    </a>
+                    <a href="https://sistemaqte.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-school"></i> Quadro de Trabalho Escolar
+                    </a>
+                    <a href="https://protocolo231.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-file-signature"></i> Protocolo - Pista e Dojô
+                    </a>
+                </div>
 
-                <a href="https://sistemaqte.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-school"></i> Quadro de Trabalho Escolar
-                </a>
-
-                <a href="https://protocolo231.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-file-signature"></i> Protocolo - Pista e Dojô
-                </a>
-
-                <a href="https://sistemaqtm.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-calendar-check"></i> Quadro de Trabalho Mensal - QTM
-                </a>
-
-                <a href="https://postivasnegativas.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-id-card"></i> Controle - Postitivas/Negativas
-                </a>
-
-                <a href="https://escalaaplicacaoprova.pythonanywhere.com/" target="_blank" class="app-button">
-                    <i class="fa-solid fa-file"></i> Aplicação de Provas
-                </a>
+                <div class="button-column">
+                    <a href="https://sistemaqtm.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-calendar-check"></i> Quadro de Trabalho Mensal - QTM
+                    </a>
+                    <a href="https://postivasnegativas.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-id-card"></i> Controle - Postitivas/Negativas
+                    </a>
+                    <a href="https://escalaaplicacaoprova.pythonanywhere.com/" target="_blank" class="app-button">
+                        <i class="fa-solid fa-file"></i> Aplicação de Provas
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -146,6 +176,3 @@
     </script>
 </body>
 </html>
-
-
-
